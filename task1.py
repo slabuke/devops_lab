@@ -7,4 +7,4 @@ for i in range(n):
     a = {name: rezult_mark}
     student_marks.update(a)
 entered_name = input()
-print('%.2f' % student_marks[entered_name]) \n
+print('%.2f' % student_marks[entered_name])
