@@ -9,5 +9,4 @@ for i in range(len(list_key)):
         dict_fin[list_key[i]] = list_val[i]
     else:
         dict_fin[list_key[i]] = "None"
-print(dict_fin)
-
+print(dict_fin) \n
