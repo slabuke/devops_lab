@@ -13,4 +13,4 @@ for m in moves:
         y = y - 1
     else:
         y = y - 1
-print ("Output:\n", (x == 0 and y == 0)) \n
+print (x == 0 and y == 0)
