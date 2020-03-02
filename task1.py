@@ -8,3 +8,4 @@ for i in range(n):
     student_marks.update(a)
 entered_name = input()
 print('%.2f' % student_marks[entered_name])
+
