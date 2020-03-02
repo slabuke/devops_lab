@@ -2,5 +2,4 @@
 string = input("Input: \n")
 splstring = string.split()
 s1 = '-'.join(splstring)
-print("Output: \n", (s1))
-
+print("Output: \n", (s1)) \n
