@@ -14,3 +14,4 @@ for m in moves:
     else:
         y = y - 1
 print ("Output:\n", (x == 0 and y == 0))
+
