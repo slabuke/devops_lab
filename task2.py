@@ -7,4 +7,6 @@ for i in range(len(str_key)):
         dict_fin[str_key[i]] = str_val[i]
     else:
         dict_fin[str_key[i]] = None
-print(dict_fin)
+tmp_string = str(dict_fin)
+
+print(tmp_string.replace("'", ''))
