@@ -9,8 +9,6 @@ for m in moves:
         x = x + 1
     elif m == 'U':
         y = y + 1
-    elif m == 'D':
-        y = y - 1
     else:
         y = y - 1
 print(x == 0 and y == 0)
