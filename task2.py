@@ -8,5 +8,5 @@ for i in range(len(list_key)):
     if i < len(list_val):
         dict_fin[list_key[i]] = list_val[i]
     else:
-        dict_fin[list_key[i]] = "None"
+        dict_fin[list_key[i]] = None
 print(dict_fin)
