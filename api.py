@@ -3,8 +3,8 @@
 import argparse
 import requests
 
-user = ""
-password = ""
+user = input("User: \n")
+password = input("Password: \n")
 
 
 parser = argparse.ArgumentParser()
@@ -28,18 +28,18 @@ req = requests.get(
 r = req.json()
 data = r['title']
 if args.created:
-    data = data + " Created: " + r['created_at']
+    data += " Created: " + r['created_at']
 
 if args.status:
-    data = data + " Request_status: " + r['labels'][0]['name']
+    data += " Request_status: " + r['labels'][0]['name']
 
 if args.user:
-    data = data + " Opened_by: " + r['head']['repo']['owner']['login'] + " "
+    data += " Opened_by: " + r['head']['repo']['owner']['login'] + " "
 
 if args.commits:
-    data = data + " Count_of_commits: " + str(r['commits'])
+    data += " Count_of_commits: " + str(r['commits'])
 
 if args.comments:
-    data = data + " Number_of_comments: " + str(r['comments'])
+    data += " Number_of_comments: " + str(r['comments'])
 
 print(data)
