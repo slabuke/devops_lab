@@ -43,4 +43,3 @@ if args.comments:
     data = data + " Number_of_comments: " + str(r['comments'])
 
 print(data)
-
