@@ -1,11 +1,17 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python
 import time
 from time import gmtime, strftime
 import psutil
 import json
+import argparse
 
+parser = argparse.ArgumentParser(description='Simple server system monitoring script.')
+parser.add_argument('interval', type=int, nargs='?', const=1, default=300, help='Time interval.')
+parser.add_argument('data_type', type=str, nargs='?', const=1, default='txt', help='Output file format.')
+args = parser.parse_args()
 
 class CompInfo:
+
     def __init__(self):
         self.mb = 1024 * 1024
         self.cpu = psutil.cpu_percent()
@@ -31,32 +37,32 @@ class CompInfo:
     def ionetpack(self):
         return self.ionets, self.ionetr
 
-
-def WriteToJson(file, timer):
+if args.data_type == 'json':
+ def WriteToJson(file, timer):
     i = 0
     data = {}
     while True:
+     cinfo = CompInfo()
 
-        cinfo = CompInfo()
-
-        data['SNAPSHOT ' + str(i + 1) + ": " + strftime("%Y-%m-%d %H:%M:%S", gmtime())] = {
+     data['SNAPSHOT ' + str(i + 1) + ": " + strftime("%Y-%m-%d %H:%M:%S", gmtime())] = {
             "Cpu Load": str(cinfo.cpuload()) + "%",
             "Memory usage": str(cinfo.memus()) + "mb",
             "Virtual Memory Usage": str(cinfo.vmemus()) + "mb",
             "I/O disk": "Read: " + "mb/Write: ".join(cinfo.iodiskbytes()) + "mb",
             "I/O network, packets": "Sent: " + "/Received: ".join(cinfo.iodiskbytes())}
 
-        with open(file, 'w') as outfile:
+     with open(file, 'w') as outfile:
             json.dump(data, outfile, indent=3)
 
-        i += 1
-        time.sleep(timer * 60)
+            i += 1
+            time.sleep(args.interval)
 
+elif args.data_type == 'txt':
+ def WriteToFile(file, timer):
 
-def WriteToFile(file, timer):
-    fileTxt = open(file, "w+")
-    i = 0
-    while True:
+     fileTxt = open(file, "w+")
+     i = 0
+     while True:
         fileTxt = open(file, "a+")
         cinfo = CompInfo()
         fileTxt.write('SNAPSHOT ' + str(i + 1) + ": " + strftime("%Y-%m-%d %H:%M:%S",
@@ -68,15 +74,4 @@ def WriteToFile(file, timer):
         fileTxt.write("\t\t\t I/O network, packets. Read %s Write: %s\r\n" % cinfo.iodiskbytes())
         fileTxt.close()
         i += 1
-        time.sleep(timer * 60)
-
-
-filetype = "json"  # config.config['Common']['output']
-interval = 5  # config.config['Common']['interval']
-
-
-if filetype == "json":
-    WriteToJson("data.json", interval)
-
-elif filetype == "txt":
-    WriteToFile("data.txt", interval)
+        time.sleep(args.interval)
