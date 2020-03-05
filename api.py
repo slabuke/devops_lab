@@ -2,10 +2,7 @@
 
 import argparse
 import requests
-
-user = input("User: \n")
-password = input("Password: \n")
-
+import getpass
 
 parser = argparse.ArgumentParser()
 parser.add_argument("-owner", nargs=1, help="write repo owner", required=True)
@@ -20,6 +17,13 @@ parser.add_argument('-v', action='version', version='version 1.0')
 
 
 args = parser.parse_args()
+
+user = input("User: \n")
+print("And password: ")
+try:
+    password = getpass.getpass()
+except Exception as err:
+    print("You don't entered password", err)
 
 req = requests.get(
     'https://api.github.com/repos/' + args.owner[0] + '/' + args.repo[0] + '/pulls/' + args.number[
