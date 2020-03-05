@@ -11,14 +11,10 @@ You can get next information:
 
 # Example of using:
 
-● python First.py -path ./ -ext .py
-
-● python First.py -path ./ -par
-
-● python First.py -path ./ -rec
-
-● python First.py -path ./ -sname
-
+python First.py -path ./ -ext .py
+python First.py -path ./ -par
+python First.py -path ./ -rec
+python First.py -path ./ -sname
 
 
 

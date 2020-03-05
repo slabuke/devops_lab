@@ -9,6 +9,6 @@ class FactorialTest(unittest.TestCase):
         f = task3.factorial(5)
         self.assertEqual(f, 120)
 
-        
+
 if __name__ == '__main__':
     unittest.main()
