@@ -46,4 +46,3 @@ if args.stime:
     time_sorted_list = sorted(full_list, key=os.path.getmtime)
     for i in time_sorted_list:
         print(i)
-        
