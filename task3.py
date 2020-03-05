@@ -1,6 +1,6 @@
 #!/usr/bin/python3
-n = int(input("Input:\n "))
+n = int(input())
 fact = 1
 for i in range(n):
     fact *= i + 1
-print("Output:\n {1}".format(n, fact))
+print("{1}".format(n, fact))
