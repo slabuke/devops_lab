@@ -10,7 +10,7 @@ You can get next information:
 	● order output by date of creation
 
 # Example of using:
-
+ Examle:
 ● python First.py -path ./ -ext .py
 ● python First.py -path ./ -par
 ● python First.py -path ./ -rec
