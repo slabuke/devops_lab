@@ -11,6 +11,6 @@ You can get next information for all pull requests:
 
 Example of using:
 
-python ./git_inf -owner alenaPy -repo devops_lab -number 5 -status -commits
+python ./api.py -owner alenaPy -repo devops_lab -number 5 -status -commits
 
 User and password (Important)
