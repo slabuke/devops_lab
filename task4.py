@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-string = input("Input: \n")
+string = input()
 splstring = string.split()
 s1 = '-'.join(splstring)
-print("Output: \n", (s1))
+print(s1)
