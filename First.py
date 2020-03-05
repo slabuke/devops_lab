@@ -1,9 +1,6 @@
 #!/usr/bin/env python
-
-import os, time
+import os
 import argparse
-from os import listdir
-from os.path import isfile, join
 
 
 parser = argparse.ArgumentParser()
@@ -38,7 +35,7 @@ if args.ext:
 
 # order output by filename
 if args.sname:
-    s=sorted(os.listdir(args.path))
+    s = sorted(os.listdir(args.path))
     for i in range(len(s)):
         print(s[i])
 
@@ -46,6 +43,7 @@ if args.sname:
 if args.stime:
     file_list = os.listdir(args.path)
     full_list = [os.path.join(args.path, i) for i in file_list]
-    time_sorted_list = sorted(full_list, key = os.path.getmtime)
+    time_sorted_list = sorted(full_list, key=os.path.getmtime)
     for i in time_sorted_list:
-        print (i)
+        print(i)
+        
