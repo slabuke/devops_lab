@@ -14,9 +14,3 @@ Example of using:
 python ./git_inf -owner alenaPy -repo devops_lab -number 5 -status -commits
 
 User and password (Important)
-
-Enter your credentials in api.py
-
-	user = "some_user"
-	password = "some_password"
-
