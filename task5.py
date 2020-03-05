@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-moves = input("Input: \n")
+moves = input()
 x = 0
 y = 0
 for m in moves:
@@ -11,4 +11,4 @@ for m in moves:
         y += 1
     else:
         y -= 1
-print("Output:\n", (x == 0 and y == 0))
+print(x == 0 and y == 0)
