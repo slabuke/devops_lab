@@ -1,6 +1,6 @@
 #!/usr/bin/python3
-str_key = input("Enter list of keys \n: ").split()
-str_val = input("Enter list of values \n: ").split()
+str_key = input().split()
+str_val = input().split()
 dict_fin = {}
 for i in range(len(str_key)):
     if i < len(str_val):
