@@ -11,6 +11,7 @@ parser.add_argument('interval', type=int, nargs='?', const=1, default=300, help=
 parser.add_argument('data_type', type=str, nargs='?', const=1, default='txt', help='Output file format.')
 args = parser.parse_args()
 
+
 class CompInfo:
 
     def __init__(self):
@@ -38,9 +39,10 @@ class CompInfo:
     def ionetpack(self):
         return self.ionets, self.ionetr
 
-def WriteToJson(file,interval):
+
+def WriteToJson(file, interval):
     i = 0
-    data = {}
+    # data = {}
     while True:
         cinfo = CompInfo()
         data1 = {
@@ -57,6 +59,8 @@ def WriteToJson(file,interval):
             outfile.write(outfile1)
             i += 1
             time.sleep(interval)
+
+
 def WriteToFile(file, interval):
 
     fileTxt = open(file, "w+")
@@ -65,7 +69,7 @@ def WriteToFile(file, interval):
         fileTxt = open(file, "a+")
         cinfo = CompInfo()
         fileTxt.write('SNAPSHOTS ' + str(i + 1) + '\r\n'),
-        fileTxt.write('Time ' + strftime("%Y-%m-%d %H:%M:%S",gmtime()) + '\r\n')
+        fileTxt.write('Time ' + strftime("%Y-%m-%d %H:%M:%S", gmtime()) + '\r\n')
         fileTxt.write("\t\t\t Cpu Load: %s\r\n" % str(cinfo.cpuload()))
         fileTxt.write("\t\t\t Memory usage: %s mb\r\n " % str(cinfo.memus()))
         fileTxt.write("\t\t\t Virtual memory usage: %s mb\r\n" % str(cinfo.vmemus()))
@@ -75,8 +79,9 @@ def WriteToFile(file, interval):
         i += 1
         time.sleep(interval)
 
+
 if args.data_type == 'json':
     WriteToJson('data.json', args.interval)
 
 elif args.data_type == 'txt':
-    WriteToFile('data.txt',args.interval)
+    WriteToFile('data.txt', args.interval)
