@@ -54,6 +54,7 @@ def WriteToJson(file, interval):
             'I/O disk': str("Read: " + "mb/Write: ".join(cinfo.iodiskbytes())),
             'I/O network, packets': str("Sent: " + "/Received: ".join(cinfo.iodiskbytes()))
                }
+        
         with open(file, 'a+') as outfile:
             outfile1 = json.dumps(data1, indent=4)
             outfile.write(outfile1)
