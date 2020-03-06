@@ -8,7 +8,7 @@ from time import gmtime, strftime
 
 parser = argparse.ArgumentParser(description='Simple server system monitoring script.')
 parser.add_argument('interval', type=int, nargs='?', const=1, default=300, help='Time interval.')
-parser.add_argument('data_type', type=str, nargs='?', const=1, default='txt', help='Output file format.')
+parser.add_argument('data_type', type=str, nargs='?', const=1, default='txt', help='f-format.')
 args = parser.parse_args()
 
 
