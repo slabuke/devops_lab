@@ -1,0 +1,16 @@
+apache_vhosts:
+- servername: server1@gold.som
+  documentroot: /root/secret
+  serveradmin: Admin1
+  directorypath: /secretPath
+  port: 8080
+- servername: server2@gold.som
+  documentroot: /root/secret
+  serveradmin: Admin2
+  directorypath: /secretPath
+  port: 8081
+- servername: 32@gold.som
+  documentroot: /root/secret
+  serveradmin: Admin3
+  directorypath: /secretPath
+  port: 8082
