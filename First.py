@@ -7,7 +7,7 @@ import argparse
 parser = argparse.ArgumentParser()
 parser.add_argument("-path", nargs='?', action="store", default="./", help="Input path")
 parser.add_argument("-par", action="store_true", help="output files only from the parent directory")
-parser.add_argument('-ext', nargs='?', default=False, action="store", dest='ext', help='extention filter')
+parser.add_argument('-ext', nargs='?', default=False, action="store", dest='ext', help='ext filt')
 parser.add_argument("-sname", action="store_true", help="order output by filename")
 parser.add_argument("-stime", action="store_true", help="order output by date of creation")
 
