@@ -1,48 +1,70 @@
 #!/usr/bin/env python
+
 import os
 import argparse
 
 
 parser = argparse.ArgumentParser()
-parser.add_argument("-path", help="Input path", required=True)
+parser.add_argument("-path", nargs='?', action="store", default="./", help="Input path")
 parser.add_argument("-par", action="store_true", help="output files only from the parent directory")
-parser.add_argument("-rec", action="store_true", help="list files recursively")
-parser.add_argument("-ext", help="filter by file extension")
+parser.add_argument('-ext', nargs='?', default=False, action="store", dest='ext', help='File extention filter')
 parser.add_argument("-sname", action="store_true", help="order output by filename")
 parser.add_argument("-stime", action="store_true", help="order output by date of creation")
-parser.add_argument('-v', action='version', version='version 1.0')
 
 args = parser.parse_args()
 
-# output files only from the parent directory
-if args.par:
-    for entry in os.listdir(args.path):
-        if os.path.isfile(os.path.join(args.path, entry)):
-            print(entry)
 
-# list files recursively
-if args.rec:
+def par():
+    list = []
+    timelist = []
+    for files in os.listdir(args.path):
+        if os.path.isfile(os.path.join(args.path, files)):
+            list.append(files)
+        timelist.append(os.path.getctime(os.path.join(args.path, files)))
+    return list, timelist
+
+
+def rec():
+    list = []
+    timelist = []
     for root, folders, files in os.walk(args.path):
         for filename in files:
-            print(root, filename)
+            list.append(filename)
+            timelist.append(os.path.getctime(os.path.join(root, filename)))
+    return list, timelist
 
-# filter by file extension
-if args.ext:
-    for root, dirs, files in os.walk(args.path):
-        for file in files:
-            if file.endswith(args.ext):
-                print(os.path.join(root, file))
 
-# order output by filename
-if args.sname:
-    s = sorted(os.listdir(args.path))
-    for i in range(len(s)):
-        print(s[i])
+def time_sort(time, list):
+    listout = [x for _, x in sorted(zip(time, list))]
+    return listout
 
-# order output by date of creation
-if args.stime:
-    file_list = os.listdir(args.path)
-    full_list = [os.path.join(args.path, i) for i in file_list]
-    time_sorted_list = sorted(full_list, key=os.path.getmtime)
-    for i in time_sorted_list:
-        print(i)
+
+if args.par:
+    nlist, tlist = par()
+    if args.sname:
+        nlist.sort()
+    elif args.stime:
+        nlist = time_sort(tlist, nlist)
+
+    if args.ext:
+        for name in nlist:
+            if name.endswith("." + args.ext):
+                print(name)
+    else:
+        for name in nlist:
+            print(name)
+
+else:
+    nlist, tlist = rec()
+    if args.sname:
+        nlist.sort()
+    elif args.stime:
+        nlist = time_sort(tlist, nlist)
+
+    if args.ext:
+        for name in nlist:
+            if name.endswith("." + args.ext):
+                print(name)
+    else:
+        for name in nlist:
+            print(name)
